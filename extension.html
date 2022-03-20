@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" href="extension.css">
+       
+     
+</head>
+<li></li>
+<body>
+    <!-- ADDING BUTTON AND INPUT TAG -->
+      
+   <input type="text" id="input-el">
+
+   <button id="input-btn">SAVE INPUT</button>
+   <ul id="ul-el"></ul>
+   <script src="extension.js"></script>
+     <!-- .// style these button
+           // check it out in css file// -->
+           
+
+     
+
+
+           <!-- -------------------------------------- -->
+
+        <!-- 
+
+                MAKING INPUT BUTTON WORK 
+
+                YOU KNOW HOW TO MAKE A INPUT BUTTON WORK BY ADDING A ONCLICK EVENT
+
+                WE WILL SEE A TECUE THAT PROFESSIONAL DEVELOPERS USES IN THEIR DAILR ROUTINE
+
+              
+                // -- REFACTOR TO eventListener -->
+           
+<!-- 
+       code ==>   // grab id of element button and store it in varibale
+
+                   ley inputBtn = document.GetElementById("input-btn")
+
+                   // add a event listener
+
+                      inputbtn.addEventListener ("click" ,   fucntion () {       ==>(click is type of event)
+ 
+
+                        conosle.log("button was clicked")
+                      })
+       
+                
+
+            // ==>  ADDING MORE EVENT LISTENER
+            //  CREATE A DIV OPEN BOX WITH ID BOX
+
+            <div id="box">OPEN THE BOX</div> 
+            
+         // GRAB THE BOX FROM DOM AND STORE IT IN VARIBALE
+        
+         ==> letBox =  document.GetElementById("box")
+
+
+         // ADD THE CLICK EVENT LISTENER TO THE BOX
+         //LOGOUT "I WANT TO OPENT THE BOX:" WHEN IT IS CLICKED
+
+             Box.addEventListener("click",function(){
+
+              console.log("I WANT TO OPEN THE BOX")
+            })
+
+             ----------------------------------------  -->
+
+ <!-- CREATING myLEads AND inputEl
+
+     / CREATE TWO VARIABLES
+     // myLEADS -> should be assign to empty array
+     // inputEl -> should be asign to text input field
+
+     code ->   let myLeads = []
+               const inputEl = document.GetElementById("input-el")
+
+               you will be wondering why i used const instead of let
+
+               well you can use both , professional developes use cont and let
+
+     ==> what to use actually const or let ?
+
+          we can use constant where we kow that the value is constant and might not change in code
+          
+          let can be used for vairale whoes value you want yo change further in code
+
+          like if you are creating a certificate for a student then you can use
+
+           const studentName = john ==> because student name is  constant thorugh out 
+
+           one more example let suppose you are creating a black jack game where
+
+           const playernMe = john
+
+           const crdits = 16
+
+           and the you use
+             
+            credit = credits - 2 
+
+            here you can see the value of credits is changed so you cant you const
+
+            you have o use let 
+
+              
+              -->
+
+
+                       <!-- PUSH VALUE TO LEAD ARRAY 
+                      
+                         // PUSH "WWW.AWEOSMELEADS.COM" TO myLeads array
+                                
+                             myLeads.push ("www.awesomeleads.com") see itin js file
+
+
+         // now  push what ever the user write in the input field to the myLeads array
+         
+          it is done by wrting DOM and .value ahead
+
+          like we have inputel = document.GetLementById(input-el . value)
+
+          soo we doe myLeads.push (inputEl.value)
+
+                      -->
+
+                      
+
+
+                 <!--  USING A FOR LOOP TO RENDER OUT INSTEAD OF LOGIN OUT LEAD
+                  
+                   USE DUMMY DATA TO MAKE IT EASY SO ADD SOME DATA IN EMPTY ARRAY
+
+                   myLeads = ["john", "per"  mike]
+                  
+                   // logout items in myLead array using for loop
+
+                   for( i=0; i < myLeads.length ; i++) {
+
+                    coonsole.log(myLeads[i])
+                   }
+
+
+                  now instead of login it out we wil render ir out on page 
+
+                  to do so  you need to know about creating unordered list 
+                
+                // create a unordered list in html
+
+                  </ul id= "ul-el"></ul>
+                  
+                  // grap the ul and store it in  const variable ulEl
+
+                  ->  const ulUl = document.GetElementById("ul-el")
+                
+                    
+                    
+                    
+                   for( i=0; i < myLeads.length ; i++) {
+                   // to render it on page we will use .textContent property 
+
+                    ulEl.textContent = myLeads[i]
+
+                    it will render out last element in array because during iteration of i previous elemnts are not considered 
+                    so we will use =+ 
+                                          ulEl.textContent += myLeads[i]  ==> line 20-24 in js file
+
+                  }-->
+
+
+
+                  <!-- HOW TO RENDER ELEMENTS USING INNER HTML 
+                  
+                    IF WE DO                     ulEl.textContent = "<li>" +  myLeads[i]  "</li>"
+
+                      it willbe printeed as string because in this way we cant use html in js
+
+                      to use inerHTML we need .innerHTML instead of >textContent
+                      so it goes like
+                                           ulEl.innerHTML = "<li>" + myLeads[i]  "</li>"
+ 
+                  
+                  -->
+
+                  <!-- IMPROVING PERFORMNACE OF OUR WEBSITE
+                  //CREATE A VARIBALE LST ITEM AND ET IT TO EMPTY STRING
+
+                  let listItems = ""
+
+for ( i =0; i < myLeads.length ; i++) {  // checking to render out on page 
+
+
+  // ADD ITEMS TO LIST ITEM VARIABEL INSTEAD OF ULEL.innerHTML
+
+      listItems += "<li>" + myLeads[i] + "</li>" // for space 
+    
+    }
+             ulEl.innerHTML = listItems
+                  
+                    in this way our website would be more resposnive 
+
+                  -->
+
+
+                  <!--  create render function 
+                  
+                  -> IN THIS WE WILL MAKE OUR ARRAY MYlEADS EMPTY
+
+                  // CREATING FUNCTION WILL DO THAT IT WILL SAVE THE USER DATA THAT HE INPUTS IN INPUT PANEL
+
+                  
+                   TO DO THIS CREATE FUNCTION renderLeads() and put for loop code in it  
+                   
+                   function renderLeads() {
+
+                      let listItems = ""
+
+                for ( i =0; i < myLeads.length ; i++) {  // checking to render out on page 
+
+                    //console.log (myLeads[i])
+                  
+                      listItems += "<li>" + myLeads[i] + "</li>" // for space 
+                    
+                    }
+                            ulEl.innerHTML = listItems
+
+                                    
+                   }
+                  and then   myLeads.push(inputEl.value)  // push whatever is written in input box to myLeads array
+        
+                   renderLeads() -> call render()
+
+                  
+                  -->
+
+
+              <!-- TO MAKE THE ADDED DATA INTO LINKS USE <a> </a> tag
+
+                 listItems += "<li><a href = 'myLeads'>" + myLeads[i] + "</a></li>"
+                              in <a></a> tag give href to myLeads
+
+                              writing string inside a string then use single Qutation
+                            -->
+
+    <!--  // to make the link open in new tag 
+          // inside of <a> tag write target = '_blank'
+
+       whole written as -> listItems += "<li> <a  target = '_blank' href ='myLeads[i]'>" + myLeads[i] + " </a></li>" // for space 
+     
+    -->
+
+ </body>
+
+</html>
