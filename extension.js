@@ -40,3 +40,17 @@ function renderLeads(){
                ulEl.innerHTML = listItems
   
 }
+
+
+deleteBtn.addEventListener("dblclick", function() {
+  localStorage.clear()
+  myLeads = []
+  render(myLeads)
+})
+
+inputBtn.addEventListener("click", function() {
+  myLeads.push(inputEl.value)
+  inputEl.value = ""
+  localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+  render(myLeads)
+})

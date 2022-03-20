@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <link rel="stylesheet" href="extension.css">
-       
-     
-</head>
-<li></li>
-<body>
-    <!-- ADDING BUTTON AND INPUT TAG -->
-      
-   <input type="text" id="input-el">
-
-   <button id="input-btn">SAVE INPUT</button>
-   <ul id="ul-el"></ul>
-   <script src="extension.js"></script>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <input type="text" id="input-el">
+        <button id="input-btn">SAVE INPUT</button>
+        <button id="tab-btn">SAVE TAB</button>
+        <button id="delete-btn">DELETE ALL</button>
+        <ul id="ul-el">
+        </ul>
+        <script src="index.js"></script>
+    </body>
+</html>
      <!-- .// style these button
            // check it out in css file// -->
            
@@ -251,6 +249,30 @@ for ( i =0; i < myLeads.length ; i++) {  // checking to render out on page
        whole written as -> listItems += "<li> <a  target = '_blank' href ='myLeads[i]'>" + myLeads[i] + " </a></li>" // for space 
      
     -->
+
+            <!--  TO GET CURRENT TAB
+            
+     
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+})
+            
+                " to delete all entries
+                
+                       deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+})
+
+                "
+            -->
+
+
+
 
  </body>
 
